@@ -79,22 +79,23 @@ namespace BinaryTree3
                     if(next %2 == 0)
                     {
 
-                        nodes.Add(next);
+                        //nodes.Add(next);
                         next = next / 2;
+                        nodes.Add(next);
 
                     }
                     else if(next %2 == 1)
                     {
 
-                        nodes.Add(next);
-                        next = (next - 1) / 2;
                         //nodes.Add(next);
+                        next = (next - 1) / 2;
+                        nodes.Add(next);
                     }
                 }
 
-                for (int i = nodes.Count; i > nodes.Count; i--)
+                for (int i = nodes.Count; i > 0; i--)
                 {
-                    if(nodes[i] %2 == 0)
+                    if(nodes[i-1] %2 == 0)
                     {
                         if(current.left != null)
                         {
@@ -115,7 +116,7 @@ namespace BinaryTree3
                         }
                         else
                         {
-                            current.left = new Node(x);
+                            current.right = new Node(x);
                             testPrint.Add(x);
                         }
 
