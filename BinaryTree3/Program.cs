@@ -61,14 +61,16 @@ namespace BinaryTree3
             {
                 //Add the root
                 root = new Node(x);
-                current = root;
                 count = 1;
+
+                current = root;
                 testPrint.Add(x);
             }
             else
             {
                 List<int> nodes = new List<int>();
-
+                
+                current = root;
                 count++;
                 next = count;
 
@@ -76,18 +78,21 @@ namespace BinaryTree3
                 {
                     if(next %2 == 0)
                     {
-                        next = next / 2;
+
                         nodes.Add(next);
+                        next = next / 2;
 
                     }
-                    if(next %2 == 1)
+                    else if(next %2 == 1)
                     {
-                        next = (next - 1) / 2;
+
                         nodes.Add(next);
+                        next = (next - 1) / 2;
+                        //nodes.Add(next);
                     }
                 }
 
-                for (int i = 0; i > nodes.Count; i--)
+                for (int i = nodes.Count; i > nodes.Count; i--)
                 {
                     if(nodes[i] %2 == 0)
                     {
