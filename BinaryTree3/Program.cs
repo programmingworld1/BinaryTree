@@ -14,6 +14,10 @@ namespace BinaryTree3
             tree.AddNode(12);
             tree.AddNode(10);
             tree.AddNode(55);
+            tree.AddNode(20);
+            tree.AddNode(40);
+            tree.AddNode(50);
+            tree.AddNode(42);
 
             Console.ReadKey();
 
@@ -79,17 +83,17 @@ namespace BinaryTree3
                     if(next %2 == 0)
                     {
 
-                        //nodes.Add(next);
-                        next = next / 2;
                         nodes.Add(next);
+                        next = next / 2;
+                        //nodes.Add(next);
 
                     }
                     else if(next %2 == 1)
                     {
 
-                        //nodes.Add(next);
-                        next = (next - 1) / 2;
                         nodes.Add(next);
+                        next = (next - 1) / 2;
+                        //nodes.Add(next);
                     }
                 }
 
