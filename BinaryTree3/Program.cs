@@ -134,6 +134,20 @@ namespace BinaryTree3
 
         }
 
+        public int Depth()
+        {
+            current = root;
+            int depth = 0;
+
+            while (current?.left != null) //While left != null, Go Left.. depth++
+            {
+                depth++;
+                current = current.left;
+            }
+
+            return depth;
+        }
+
         /// <summary>
         /// Een methode die de testPrint [List] print."
         /// </summary>
