@@ -29,6 +29,11 @@ namespace BinaryTree3
             tree.PrintTest(); //hard-coded check op die lijst (tot 3 lagen)
             
             Console.ReadLine();
+            Console.WriteLine();
+
+            Console.WriteLine(tree.Search(20).data);
+
+            Console.ReadKey();
         }
     }
 
@@ -167,6 +172,82 @@ namespace BinaryTree3
             Console.WriteLine(root.data);
             Console.WriteLine("left: " + root.left.data + " " + "right: " + root.right.data);
             Console.WriteLine("left: " + root.left.left.data + " " + root.left.right.data + " " + "right: " + root.right.left.data + " " + root.right.right.data);
+        }
+
+        public Node Search(int x)
+        {
+            for (int i = 1; i < count; i++)
+            {
+                List<int> nodes = new List<int>(); //Lijst met stappen vanaf het doel terug naar de root node.
+
+                current = root;
+                next = i;
+
+                if(next == 1 && root.data == x)
+                {
+                    return root;
+                }
+
+                while (next > 1) //Zolang de volgende stap (next) niet de root is...
+                {
+                    if (next % 2 == 0) //ALS volgende stap == even
+                    {
+                        nodes.Add(next); //voeg stap toe aan de lijst
+                        next = next / 2; //ga naar de parent (terug te rekenen)
+                    }
+                    else if (next % 2 == 1) //ALS volgende stap == oneven
+                    {
+                        nodes.Add(next); //voeg stap toe aan de lijst
+                        next = (next - 1) / 2; //ga naar de parent (terug te rekenen)
+                    }
+                }
+
+                for (int j = nodes.Count; j > 0; j--) //loop die de list achterstevoren uitleest en zo de stappen volgt om de node echt te plaatsen/koppelen.
+                {
+                    if (nodes[j - 1] % 2 == 0)
+                    {
+                        if (current == root)
+                        {
+                            current = current.left;
+                            if (current.data == x)
+                            {
+                                return current;
+                            }
+                        }
+                        else
+                        {
+                            current = current.left;
+
+                            if (current.data == x)
+                            {
+                                return current;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if (current == root)
+                        {
+                            current = current.right;
+                            if (current.data == x)
+                            {
+                                return current;
+                            }
+                        }
+                        else
+                        {
+                            current = current.right;
+
+                            if (current.data == x)
+                            {
+                                return current;
+                            }
+                        }
+                    }
+                }
+                
+            }
+            return null;
         }
     }
 }
